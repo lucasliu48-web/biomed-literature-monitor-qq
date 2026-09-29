@@ -13,9 +13,9 @@ jobs:
   monitor:
     runs-on: ubuntu-latest
     env:
-      QQ_EMAIL_SENDER:1204689902@qq.com ${{ secrets.QQ_EMAIL_SENDER }}
-      QQ_EMAIL_AUTH_CODE:iaiyakrvsdpwbagh ${{ secrets.QQ_EMAIL_AUTH_CODE }}
-      EMAIL_RECIPIENT:1204689902@qq.com ${{ secrets.EMAIL_RECIPIENT }}
+      QQ_EMAIL_SENDER: ${{ secrets.QQ_EMAIL_SENDER }}
+      QQ_EMAIL_AUTH_CODE: ${{ secrets.QQ_EMAIL_AUTH_CODE }}
+      EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
       AI_API_KEY: ${{ secrets.AI_API_KEY }}
       TZ: Asia/Shanghai
 
