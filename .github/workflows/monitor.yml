@@ -16,7 +16,7 @@ jobs:
     env:
       QQ_EMAIL_SENDER: 1204689902@qq.com ${{ secrets.QQ_EMAIL_SENDER }}
       QQ_EMAIL_AUTH_CODE:iaiyakrvsdpwbagh ${{ secrets.QQ_EMAIL_AUTH_CODE }}
-      EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+      EMAIL_RECIPIENT:1204689902@qq.com ${{ secrets.EMAIL_RECIPIENT }}
       
     steps:
       - name: 检出代码
