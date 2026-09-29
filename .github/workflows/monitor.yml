@@ -1,7 +1,7 @@
 name: 生物医药顶刊文献监控
 
 on:
-  # 每天北京时间早上8点运行（UTC 0点）
+  # 每天北京时间早上 8 点运行
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
@@ -13,9 +13,9 @@ jobs:
   monitor:
     runs-on: ubuntu-latest
     env:
-      QQ_EMAIL_SENDER: 1204689902@qq.com ${{ secrets.QQ_EMAIL_SENDER }}
-      QQ_EMAIL_AUTH_CODE: 1204689902@qq.com ${{ secrets.QQ_EMAIL_AUTH_CODE }}
-      EMAIL_RECIPIENT: iaiyakrvsdpwbagh ${{ secrets.EMAIL_RECIPIENT }}
+      QQ_EMAIL_SENDER: ${{ secrets.QQ_EMAIL_SENDER }}
+      QQ_EMAIL_AUTH_CODE: ${{ secrets.QQ_EMAIL_AUTH_CODE }}
+      EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
       AI_API_KEY: ${{ secrets.AI_API_KEY }}
       TZ: Asia/Shanghai
 
