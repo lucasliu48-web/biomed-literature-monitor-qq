@@ -1,0 +1,42 @@
+name: 发送中文文献解读
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: analysis-digest
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    env:
+      QQ_EMAIL_SENDER: ${{ secrets.QQ_EMAIL_SENDER }}
+      QQ_EMAIL_AUTH_CODE: ${{ secrets.QQ_EMAIL_AUTH_CODE }}
+      EMAIL_RECIPIENT: ${{ secrets.EMAIL_RECIPIENT }}
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 发送中文解读
+        run: python send_analysis_digest.py
+
+      - name: 记录已发送日期
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add analysis_sent.json
+          if git diff --cached --quiet; then
+            echo "没有新的发送记录"
+          else
+            git commit -m "chore: 记录已发送的中文解读 [skip ci]"
+            git push
+          fi
